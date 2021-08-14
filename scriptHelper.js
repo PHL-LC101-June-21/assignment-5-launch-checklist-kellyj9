@@ -16,20 +16,47 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
    */
 }
 
+//validateInput() should take in a string as a parameter and return "Empty", "Not a Number", or "Is a Number" as appropriate
 function validateInput(testInput) {
-   
+    testInput = trim(testInput);
+    if (typeof testInput !== 'string') {
+        return 'Failed: input not a String';
+    }
+    else if (testInput === ''){
+        return 'Empty';
+    }
+    else if (isNaN(testInput)){
+        return 'Not a Number';
+    }
+    else if (isNumeric(testInput)) {
+        return 'Is a Number';
+    }
+    else return 'Failed: Unexpected type of input';
 }
 
+
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-   
+    console.log(validateInput("test"));
+    
+    let form = document.querySelector("form");
+    form.addEventListener("submit", function(event) {
+       //let usernameInput = document.querySelector("input[name=username]");
+       //let teamName = document.querySelector("input[name=team]");
+       //if (usernameInput.value === "" || teamName.value === "") {
+       //   alert("All fields are required!");
+       //   // stop the form submission
+          event.preventDefault();
+       //}
+    })
+
 }
 
 async function myFetch() {
-    let planetsReturned;
-
-    planetsReturned = await fetch().then( function(response) {
+//KJ ADDED: URL
+    planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+            result = response.json();
+            return result;
         });
-
     return planetsReturned;
 }
 
