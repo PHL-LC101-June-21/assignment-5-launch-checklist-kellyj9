@@ -25,19 +25,16 @@ window.addEventListener("load", function() {
     //    let planetDistance = listedPlanets[planet]["distance"];
     //    let planetMoons = listedPlanets[planet]["moons"];
     //    let planetImageUrl = listedPlanets[planet]["image"];
-    let planetName = planet["name"];
-    let planetDiameter= planet["diameter"];
-    let planetStar = planet["star"];
-    let planetDistance = planet["distance"];
-    let planetMoons = planet["moons"];
-    let planetImageUrl = planet["image"];
+        let planetName = planet["name"];
+        let planetDiameter= planet["diameter"];
+        let planetStar = planet["star"];
+        let planetDistance = planet["distance"];
+        let planetMoons = planet["moons"];
+        let planetImageUrl = planet["image"];
 
+        addDestinationInfo(document, planetName, planetDiameter, planetStar, planetDistance, planetMoons, planetImageUrl);
 
-      addDestinationInfo(document, planetName, planetDiameter, planetStar, planetDistance, planetMoons, planetImageUrl);
-
-
-
-    }).then(function () {
+    }).then(function (event) {
 
        
        let form = document.querySelector("form");
@@ -51,10 +48,6 @@ window.addEventListener("load", function() {
                 let cargoLevel = document.getElementsByName("cargoMass")[0].value;
                 let list = document.getElementById("faultyItems");
                 
-
-
-
-                //console.log(document.getElementById("pilotStatus").innerHTML);
 
                 //if (
                     formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
