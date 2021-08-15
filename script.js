@@ -33,8 +33,8 @@ window.addEventListener("load", function() {
 
     }).then(function () {
         let form = document.querySelector("form");
-        form.reset(); // KJ added to clear the form when reloading window
-        document.getElementById("faultyItems").list.style.visibility = "hidden";
+        form.reset(); // KJ added to clear the form when loading window
+        document.getElementById("faultyItems").style.visibility = "hidden";
 
         form.addEventListener("submit", function(event) {
             //let pilot = document.querySelector("input[name=pilotName]");
@@ -43,6 +43,7 @@ window.addEventListener("load", function() {
             let fuelLevel = document.getElementsByName("fuelLevel")[0].value;
             let cargoLevel = document.getElementsByName("cargoMass")[0].value;
             let list = document.getElementById("faultyItems");
+
 
          
             formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
