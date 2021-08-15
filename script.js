@@ -44,14 +44,16 @@ window.addEventListener("load", function() {
 
                 //console.log(document.getElementById("pilotStatus").innerHTML);
 
-                if (formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) === false){
-                   event.preventDefault();
-                }
-
-
-
-
+                //if (
+                    formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
+                //{
                 event.preventDefault();
+                //}
+
+
+
+
+                //event.preventDefault();
             });
 
 
