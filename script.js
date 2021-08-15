@@ -1,7 +1,11 @@
 // Write your JavaScript code here!
 
 window.addEventListener("load", function() {
+    let form = document.querySelector("form");
     document.getElementById("faultyItems").style.visibility = "hidden";
+    form.reset(); // added to clear the form
+
+
     let result = [];
     let listedPlanets;
     
@@ -34,6 +38,7 @@ window.addEventListener("load", function() {
 
     //}).then(function () {
         let form = document.querySelector("form");
+
         //form.reset(); // KJ added to clear the form when loading window
         document.getElementById("faultyItems").style.visibility = "hidden";
         //console.log(document.getElementById("faultyItems").style.visibility);
@@ -45,7 +50,6 @@ window.addEventListener("load", function() {
             let fuelLevel = document.getElementsByName("fuelLevel")[0].value;
             let cargoLevel = document.getElementsByName("cargoMass")[0].value;
             let list = document.getElementById("faultyItems");
-
          
             formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
             event.preventDefault();

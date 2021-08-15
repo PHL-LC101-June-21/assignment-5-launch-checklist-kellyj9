@@ -43,6 +43,10 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     document.getElementById("copilotStatus").innerHTML = "Co-pilot Ready";
     document.getElementById("fuelStatus").innerHTML = `Fuel level high enough for launch`;
     document.getElementById("cargoStatus").innerHTML = `Cargo mass low enough for launch`;
+    //document.getElementById("launchStatus").innerHTML = `Shuttle Not Ready for Launch`;
+    //document.getElementById("launchStatus").style.color = "rgb(199, 37, 78)"; // red
+    document.getElementById("launchStatus").innerHTML = `Awaiting Information Before Launch`;
+    document.getElementById("launchStatus").style.color = "black"; // black
 
 
     let pilotType = validateInput(pilot);
