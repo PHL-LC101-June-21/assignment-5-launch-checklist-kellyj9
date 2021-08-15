@@ -1,6 +1,7 @@
 // Write your JavaScript code here!
 
 window.addEventListener("load", function() {
+    document.getElementById("faultyItems").style.visibility = "hidden";
     let result = [];
     let listedPlanets;
     
