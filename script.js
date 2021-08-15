@@ -34,7 +34,7 @@ window.addEventListener("load", function() {
 
         addDestinationInfo(document, planetName, planetDiameter, planetStar, planetDistance, planetMoons, planetImageUrl);
 
-    }).then(function (event) {
+    }).then(function () {
 
        
        let form = document.querySelector("form");
