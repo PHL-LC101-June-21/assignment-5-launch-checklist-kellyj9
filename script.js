@@ -1,9 +1,6 @@
 // Write your JavaScript code here!
 
 window.addEventListener("load", function() {
-
-    //KJ ADDED:
-
     let result = [];
     let listedPlanets;
     
@@ -11,8 +8,8 @@ window.addEventListener("load", function() {
     let listedPlanetsResponse = myFetch();
     listedPlanetsResponse.then(function (result) {
         //console.log("result=", result);
-        listedPlanets=result;
-        //console.log("listedPlanets=", listedPlanets);
+        listedPlanets = result;
+        console.log(listedPlanets);
 
 
                 //console.log("listedPlanets= ", listedPlanets);
@@ -35,31 +32,20 @@ window.addEventListener("load", function() {
         addDestinationInfo(document, planetName, planetDiameter, planetStar, planetDistance, planetMoons, planetImageUrl);
 
     }).then(function () {
-
-       
-       let form = document.querySelector("form");
-       form.addEventListener("submit", function(event) {
-                   
-                //let pilot = document.querySelector("input[name=pilotName]");
-        
-                let pilot = document.getElementsByName("pilotName")[0].value;
-                let copilot = document.getElementsByName("copilotName")[0].value;
-                let fuelLevel = document.getElementsByName("fuelLevel")[0].value;
-                let cargoLevel = document.getElementsByName("cargoMass")[0].value;
-                let list = document.getElementById("faultyItems");
-                
-
-                //if (
-                    formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
-                //{
-                event.preventDefault();
-                //}
-
-
-
-
-                //event.preventDefault();
-            });
+        let form = document.querySelector("form");
+        form.reset(); // KJ added to clear the form when reloading window
+        form.addEventListener("submit", function(event) {
+            //let pilot = document.querySelector("input[name=pilotName]");
+            let pilot = document.getElementsByName("pilotName")[0].value;
+            let copilot = document.getElementsByName("copilotName")[0].value;
+            let fuelLevel = document.getElementsByName("fuelLevel")[0].value;
+            let cargoLevel = document.getElementsByName("cargoMass")[0].value;
+            let list = document.getElementById("faultyItems");
+            
+            formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
+            event.preventDefault();
+            
+        });
 
 
     });

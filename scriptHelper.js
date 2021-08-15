@@ -36,7 +36,18 @@ function validateInput(testInput) {
 
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    //console.log(validateInput("test"));
+
+    // pilot.textContent = "Pilot Ready";
+    // copilotStatus.textContent = "Co-pilot Ready";
+    // fuelStatus.textContent = "Fuel level high enough for launch";
+    // cargoStatus.textContent = "Cargo mass low enough for launch";
+    list.style.visibility = "hidden"; // reset
+    document.getElementById("pilotStatus").innerHTML = "Pilot Ready";
+    document.getElementById("copilotStatus").innerHTML = "Co-pilot Ready";
+    document.getElementById("fuelStatus").innerHTML = `Fuel level high enough for launch`;
+    document.getElementById("cargoStatus").innerHTML = `Cargo mass low enough for launch`;
+
+
     let pilotType = validateInput(pilot);
     let copilotType = validateInput(copilot);
     let fuelLevelType = validateInput(fuelLevel);
@@ -47,51 +58,45 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     if ((pilotType === "Empty") || (copilotType === "Empty") || (fuelLevelType === "Empty") || (cargoLevelType === "Empty")) {
         alert('All fields are required!');
         isValidData = false;
-        //return isValidData;
     }
     else if ((pilotType === "Is a Number") || (copilotType === "Is a Number")){
         alert("Make sure to enter valid information for each field!");
         isValidData = false;
-        //return isValidData;
     }
     else if ((fuelLevelType === "Not a Number") || (cargoLevelType === "Not a Number")) {
         alert("Make sure to enter valid information for each field!");
         isValidData = false;
-        //return isValidData;
     }
 
     //console.log("list=", list);
     //console.log(document.getElementById("pilotStatus").innerHTML);
     if (isValidData) {
         document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
-        document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
+        document.getElementById("copilotStatus").innerHTML= `Co-pilot ${copilot} is ready for launch`;
 
         if (fuelLevel < 10000) {
             list.style.visibility = "visible";
             document.getElementById("fuelStatus").innerHTML = `Fuel level too low for launch`;
             document.getElementById("launchStatus").innerHTML = `Shuttle Not Ready for Launch`;
-            document.getElementById("launchStatus").style.color = "rgb(199, 37, 78)";
+            document.getElementById("launchStatus").style.color = "rgb(199, 37, 78)";  // red
             isValidData = false;
         }
         if (cargoLevel > 10000) {
             list.style.visibility = "visible";
             document.getElementById("cargoStatus").innerHTML = `Cargo mass too heavy for launch`;
             document.getElementById("launchStatus").innerHTML = `Shuttle Not Ready for Launch`;
-            document.getElementById("launchStatus").style.color = "rgb(199, 37, 78)";
+            document.getElementById("launchStatus").style.color = "rgb(199, 37, 78)"; // red
             isValidData = false;
         }
 
         if (isValidData) {
             list.style.visibility = "visible";
-            document.getElementById("launchStatus").style.color ="rgb(65, 159, 106)"
+            document.getElementById("launchStatus").style.color ="rgb(65, 159, 106)" // green
             document.getElementById("launchStatus").innerHTML = `Shuttle is Ready for Launch`;
-            
-    // NOT SURE IF NEEDED:
-            //document.getElementById("fuelStatus").innerHTML = `Fuel level high enough for launch`;
-            //document.getElementById("cargoStatus").innerHTML = `Cargo mass low enough for launch`;
+
         }
     }
-    return isValidData;
+    //return isValidData;
 }
 
 async function myFetch() {
