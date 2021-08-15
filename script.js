@@ -41,6 +41,13 @@ window.addEventListener("load", function() {
             let fuelLevel = document.getElementsByName("fuelLevel")[0].value;
             let cargoLevel = document.getElementsByName("cargoMass")[0].value;
             let list = document.getElementById("faultyItems");
+
+            list.style.visibility = "hidden"; // reset
+            document.getElementById("pilotStatus").innerHTML = "Pilot Ready";
+            document.getElementById("copilotStatus").innerHTML = "Co-pilot Ready";
+            document.getElementById("fuelStatus").innerHTML = `Fuel level high enough for launch`;
+            document.getElementById("cargoStatus").innerHTML = `Cargo mass low enough for launch`;
+
             
             formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
             event.preventDefault();

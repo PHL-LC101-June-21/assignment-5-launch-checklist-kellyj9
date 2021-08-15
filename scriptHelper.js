@@ -37,15 +37,11 @@ function validateInput(testInput) {
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
-    // pilot.textContent = "Pilot Ready";
-    // copilotStatus.textContent = "Co-pilot Ready";
-    // fuelStatus.textContent = "Fuel level high enough for launch";
-    // cargoStatus.textContent = "Cargo mass low enough for launch";
-    list.style.visibility = "hidden"; // reset
-    document.getElementById("pilotStatus").innerHTML = "Pilot Ready";
-    document.getElementById("copilotStatus").innerHTML = "Co-pilot Ready";
-    document.getElementById("fuelStatus").innerHTML = `Fuel level high enough for launch`;
-    document.getElementById("cargoStatus").innerHTML = `Cargo mass low enough for launch`;
+    //list.style.visibility = "hidden"; // reset
+    // document.getElementById("pilotStatus").innerHTML = "Pilot Ready";
+    // document.getElementById("copilotStatus").innerHTML = "Co-pilot Ready";
+    // document.getElementById("fuelStatus").innerHTML = `Fuel level high enough for launch`;
+    // document.getElementById("cargoStatus").innerHTML = `Cargo mass low enough for launch`;
 
 
     let pilotType = validateInput(pilot);
