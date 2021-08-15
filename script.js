@@ -34,6 +34,7 @@ window.addEventListener("load", function() {
     }).then(function () {
         let form = document.querySelector("form");
         form.reset(); // KJ added to clear the form when reloading window
+
         form.addEventListener("submit", function(event) {
             //let pilot = document.querySelector("input[name=pilotName]");
             let pilot = document.getElementsByName("pilotName")[0].value;
@@ -42,11 +43,12 @@ window.addEventListener("load", function() {
             let cargoLevel = document.getElementsByName("cargoMass")[0].value;
             let list = document.getElementById("faultyItems");
 
-            list.style.visibility = "hidden"; // reset
-            document.getElementById("pilotStatus").innerHTML = "Pilot Ready";
-            document.getElementById("copilotStatus").innerHTML = "Co-pilot Ready";
-            document.getElementById("fuelStatus").innerHTML = `Fuel level high enough for launch`;
-            document.getElementById("cargoStatus").innerHTML = `Cargo mass low enough for launch`;
+            // resets
+            list.style.visibility = "hidden";
+           // document.getElementById("pilotStatus").innerHTML = "Pilot Ready";
+            //document.getElementById("copilotStatus").innerHTML = "Co-pilot Ready";
+            //document.getElementById("fuelStatus").innerHTML = `Fuel level high enough for launch`;
+            //document.getElementById("cargoStatus").innerHTML = `Cargo mass low enough for launch`;
 
             
             formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
