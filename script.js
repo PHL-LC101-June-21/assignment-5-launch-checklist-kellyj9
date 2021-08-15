@@ -32,7 +32,7 @@ window.addEventListener("load", function() {
 
         addDestinationInfo(document, planetName, planetDiameter, planetStar, planetDistance, planetMoons, planetImageUrl);
 
-    }).then(function () {
+    //}).then(function () {
         let form = document.querySelector("form");
         //form.reset(); // KJ added to clear the form when loading window
         document.getElementById("faultyItems").style.visibility = "hidden";
@@ -49,8 +49,8 @@ window.addEventListener("load", function() {
          
             formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
             event.preventDefault();
-            
         });
+     //   });
 
     });
 
