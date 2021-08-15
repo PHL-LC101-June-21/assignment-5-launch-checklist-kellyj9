@@ -19,10 +19,8 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
 // takes in a string as a parameter and returns "Empty", "Not a Number", or "Is a Number" as appropriate
 function validateInput(testInput) {
-    testInput = testInput.trim();
-    //if (typeof testInput !== 'string') {
-    //    return 'Failed: input not a String';
-    //}
+    //testInput = testInput.trim();
+
     if (testInput === '') {
         return 'Empty';
     }
