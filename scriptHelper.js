@@ -17,9 +17,9 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
    
 }
 
-//validateInput() should take in a string as a parameter and return "Empty", "Not a Number", or "Is a Number" as appropriate
+// takes in a string as a parameter and returns "Empty", "Not a Number", or "Is a Number" as appropriate
 function validateInput(testInput) {
-    //testInput = testInput.trim();
+    testInput = testInput.trim();
     //if (typeof testInput !== 'string') {
     //    return 'Failed: input not a String';
     //}
@@ -34,20 +34,16 @@ function validateInput(testInput) {
     }
 }
 
-
+// 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-
-    // reset
+    // reset the style and innerHtml of the launch status
     list.style.visibility = "hidden"; 
     document.getElementById("pilotStatus").innerHTML = "Pilot Ready";
     document.getElementById("copilotStatus").innerHTML = "Co-pilot Ready";
     document.getElementById("fuelStatus").innerHTML = `Fuel level high enough for launch`;
     document.getElementById("cargoStatus").innerHTML = `Cargo mass low enough for launch`;
-    //document.getElementById("launchStatus").innerHTML = `Shuttle Not Ready for Launch`;
-    //document.getElementById("launchStatus").style.color = "rgb(199, 37, 78)"; // red
     document.getElementById("launchStatus").innerHTML = `Awaiting Information Before Launch`;
-    document.getElementById("launchStatus").style.color = "black"; // black
-
+    document.getElementById("launchStatus").style.color = "black";
 
     let pilotType = validateInput(pilot);
     let copilotType = validateInput(copilot);
@@ -69,8 +65,6 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         isValidData = false;
     }
 
-    //console.log("list=", list);
-    //console.log(document.getElementById("pilotStatus").innerHTML);
     if (isValidData) {
         document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
         document.getElementById("copilotStatus").innerHTML= `Co-pilot ${copilot} is ready for launch`;
@@ -94,14 +88,12 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
             list.style.visibility = "visible";
             document.getElementById("launchStatus").style.color ="rgb(65, 159, 106)" // green
             document.getElementById("launchStatus").innerHTML = `Shuttle is Ready for Launch`;
-
         }
     }
     //return isValidData;
 }
 
 async function myFetch() {
-
     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
         result = response.json();
         return result;
@@ -109,6 +101,7 @@ async function myFetch() {
     return planetsReturned;
 }
 
+// returns a random planet object from the planets array
 function pickPlanet(planets) {
     return planets[Math.floor(Math.random()*planets.length)];
 }

@@ -2,9 +2,8 @@
 
 window.addEventListener("load", function() {
     let form = document.querySelector("form");
-    document.getElementById("faultyItems").style.visibility = "hidden";
     form.reset(); // added to clear the form
-
+    document.getElementById("faultyItems").style.visibility = "hidden";
 
     let result = [];
     let listedPlanets;
@@ -12,21 +11,13 @@ window.addEventListener("load", function() {
     // Set listedPlanetsResponse equal to the value returned by calling myFetch() 
     let listedPlanetsResponse = myFetch();
     listedPlanetsResponse.then(function (result) {
-        //console.log("result=", result);
         listedPlanets = result;
         console.log(listedPlanets);
 
+    // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
 
-                //console.log("listedPlanets= ", listedPlanets);
-       // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
-        
-       let planet = pickPlanet(listedPlanets);
-    //    let planetName = listedPlanets[planet]["name"];
-    //    let planetDiameter= listedPlanets[planet]["diameter"];
-    //    let planetStar = listedPlanets[planet]["star"];
-    //    let planetDistance = listedPlanets[planet]["distance"];
-    //    let planetMoons = listedPlanets[planet]["moons"];
-    //    let planetImageUrl = listedPlanets[planet]["image"];
+        let planet = pickPlanet(listedPlanets);
+
         let planetName = planet["name"];
         let planetDiameter= planet["diameter"];
         let planetStar = planet["star"];
@@ -36,13 +27,9 @@ window.addEventListener("load", function() {
 
         addDestinationInfo(document, planetName, planetDiameter, planetStar, planetDistance, planetMoons, planetImageUrl);
 
-    //}).then(function () {
-        let form = document.querySelector("form");
-
-        //form.reset(); // KJ added to clear the form when loading window
         document.getElementById("faultyItems").style.visibility = "hidden";
-        //console.log(document.getElementById("faultyItems").style.visibility);
 
+        let form = document.querySelector("form");
         form.addEventListener("submit", function(event) {
             //let pilot = document.querySelector("input[name=pilotName]");
             let pilot = document.getElementsByName("pilotName")[0].value;
@@ -54,8 +41,5 @@ window.addEventListener("load", function() {
             formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
             event.preventDefault();
         });
-     //   });
-
     });
-
 });
