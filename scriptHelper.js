@@ -65,20 +65,6 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         isValidData = false;
     }
 
-
-    // if ((pilotType === "Empty") || (copilotType === "Empty") || (fuelLevelType === "Empty") || (cargoLevelType === "Empty")) {
-    //     alert('All fields are required!');
-    //     isValidData = false;
-    // }
-    // else if ((pilotType === "Is a Number") || (copilotType === "Is a Number")){
-    //     alert("Make sure to enter valid information for each field!");
-    //     isValidData = false;
-    // }
-    // else if ((fuelLevelType === "Not a Number") || (cargoLevelType === "Not a Number")) {
-    //     alert("Make sure to enter valid information for each field!");
-    //     isValidData = false;
-    // }
-
     if (isValidData) {
         document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
         document.getElementById("copilotStatus").innerHTML= `Co-pilot ${copilot} is ready for launch`;
@@ -104,12 +90,13 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
             document.getElementById("launchStatus").innerHTML = `Shuttle is Ready for Launch`;
         }
     }
-    //return isValidData;
 }
 
+// returns a Promise that resolves with the value returned after fetching the data from the URL 
+// and returning a JSON object from the anonymous function 
 async function myFetch() {
     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
-        result = response.json();
+        let result = response.json();
         return result;
     });
     return planetsReturned;
