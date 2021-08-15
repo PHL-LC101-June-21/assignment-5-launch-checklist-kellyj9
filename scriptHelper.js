@@ -1,25 +1,25 @@
 // Write your helper functions here!
 require('isomorphic-fetch');
 
+// displays the planet data for the mission target
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
     let missionTarget = document.getElementById("missionTarget");
     missionTarget.innerHTML = 
     // Here is the HTML formatting for our mission target div.
-                `<h2>Mission Destination</h2>
-                <ol>
-                    <li>Name: ${name}</li>
-                    <li>Diameter: ${diameter}</li>
-                    <li>Star: ${star}</li>
-                    <li>Distance from Earth: ${distance}</li>
-                    <li>Number of Moons: ${moons}</li>
-                </ol>
-                <img src="${imageUrl}">`
-   
+        `<h2>Mission Destination</h2>
+        <ol>
+            <li>Name: ${name}</li>
+            <li>Diameter: ${diameter}</li>
+            <li>Star: ${star}</li>
+            <li>Distance from Earth: ${distance}</li>
+            <li>Number of Moons: ${moons}</li>
+        </ol>
+        <img src="${imageUrl}">`
 }
 
 // takes in a string as a parameter and returns "Empty", "Not a Number", or "Is a Number" as appropriate
 function validateInput(testInput) {
-    //testInput = testInput.trim(); // autograder does not accept this line
+    //testInput = testInput.trim(); // (autograder does not like this line)
     if (testInput === '') {
         return 'Empty';
     }
@@ -31,7 +31,7 @@ function validateInput(testInput) {
     }
 }
 
-
+// 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     // reset the style and innerHtml of the launch status
     list.style.visibility = "hidden"; 
@@ -42,11 +42,11 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     document.getElementById("launchStatus").innerHTML = `Awaiting Information Before Launch`;
     document.getElementById("launchStatus").style.color = "black";
 
+    // start data validation
     let pilotType = validateInput(pilot);
     let copilotType = validateInput(copilot);
     let fuelLevelType = validateInput(fuelLevel);
     let cargoLevelType = validateInput(cargoLevel);
-
     let validTypes = {
         "validPilotType": "Not a Number", 
         "validCopilotType": "Not a Number",
@@ -54,7 +54,9 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         "validCargoLevelType": "Is a Number"
     }
 
-    let isValidData = true;
+    let isValidData = true; // flag changes to false when field data is invalid
+
+    // validate data in form fields
     if ((pilotType === "Empty") || (copilotType === "Empty") || (fuelLevelType === "Empty") || (cargoLevelType === "Empty")) {
         alert('All fields are required!');
        isValidData = false;
@@ -65,10 +67,13 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         isValidData = false;
     }
 
+    // if all field data was valid, check fuel level and cargo level
     if (isValidData) {
+        // display the pilot and copilot status
         document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
         document.getElementById("copilotStatus").innerHTML= `Co-pilot ${copilot} is ready for launch`;
 
+        // check fuel level and display message if too low
         if (fuelLevel < 10000) {
             list.style.visibility = "visible";
             document.getElementById("fuelStatus").innerHTML = `Fuel level too low for launch`;
@@ -76,6 +81,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
             document.getElementById("launchStatus").style.color = "rgb(199, 37, 78)";  // red
             isValidData = false;
         }
+        //check cargo level and display message if too heavy
         if (cargoLevel > 10000) {
             list.style.visibility = "visible";
             document.getElementById("cargoStatus").innerHTML = `Cargo mass too heavy for launch`;
@@ -84,6 +90,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
             isValidData = false;
         }
 
+        // if all data was valid and feul level and cargo level were within range, display launch ready message
         if (isValidData) {
             list.style.visibility = "visible";
             document.getElementById("launchStatus").style.color ="rgb(65, 159, 106)" // green
@@ -92,8 +99,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     }
 }
 
-// returns a Promise that resolves with the value returned after fetching the data from the URL 
-// and returning a JSON object from the anonymous function 
+// returns a Promise that resolves, after fetching the data from the URL and returning a JSON object from the anonymous function 
 async function myFetch() {
     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
         let result = response.json();

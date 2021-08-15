@@ -2,13 +2,12 @@
 
 window.addEventListener("load", function() {
     let form = document.querySelector("form");
-    form.reset(); // added to clear the form
-    document.getElementById("faultyItems").style.visibility = "hidden";
+    form.reset(); // needed to clear the form when the window is reloaded
+    document.getElementById("faultyItems").style.visibility = "hidden"; // reset visibility of the form element
 
-    //let result = [];
-    let listedPlanets;
+    let listedPlanets; // will hold array of objects
     
-    // Set listedPlanetsResponse equal to the value returned by calling myFetch() 
+    // Set listedPlanetsResponse equal to the returned value of myFetch() 
     let listedPlanetsResponse = myFetch();
     listedPlanetsResponse.then(function (result) {
         listedPlanets = result;
@@ -18,8 +17,10 @@ window.addEventListener("load", function() {
         console.log(listedPlanets);
     // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
 
+        // select a random planet object from the planets array
         let planet = pickPlanet(listedPlanets);
 
+        // get the planet key values
         let planetName = planet["name"];
         let planetDiameter= planet["diameter"];
         let planetStar = planet["star"];
@@ -27,6 +28,7 @@ window.addEventListener("load", function() {
         let planetMoons = planet["moons"];
         let planetImageUrl = planet["image"];
 
+        // display the planet data for the mission target
         addDestinationInfo(document, planetName, planetDiameter, planetStar, planetDistance, planetMoons, planetImageUrl);
 
         document.getElementById("faultyItems").style.visibility = "hidden";
@@ -37,16 +39,12 @@ window.addEventListener("load", function() {
             let copilot = document.querySelector("input[name=copilotName").value;
             let fuelLevel = document.querySelector("input[name=fuelLevel").value;
             let cargoLevel = document.querySelector("input[name=cargoMass").value;
-            
-            // let pilot = document.getElementsByName("pilotName")[0].value;
-            // let copilot = document.getElementsByName("copilotName")[0].value;
-            // let fuelLevel = document.getElementsByName("fuelLevel")[0].value;
-            // let cargoLevel = document.getElementsByName("cargoMass")[0].value;
             let list = document.getElementById("faultyItems");
-         
+            
+            // validate the form and update the launch status / list
             formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
+            // don't submit
             event.preventDefault();
         });
-    
     });
 });
