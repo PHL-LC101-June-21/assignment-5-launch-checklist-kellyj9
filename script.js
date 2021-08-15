@@ -13,20 +13,26 @@ window.addEventListener("load", function() {
         //console.log("result=", result);
         listedPlanets=result;
         //console.log("listedPlanets=", listedPlanets);
-    }).then(function () {
-        //console.log("listedPlanets= ", listedPlanets);
+
+
+                //console.log("listedPlanets= ", listedPlanets);
        // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
         
-        let planet = pickPlanet(listedPlanets);
-        let planetName = listedPlanets[planet]["name"];
-        let planetDiameter= listedPlanets[planet]["diameter"];
-        let planetStar = listedPlanets[planet]["star"];
-        let planetDistance = listedPlanets[planet]["distance"];
-        let planetMoons = listedPlanets[planet]["moons"];
-        let planetImageUrl = listedPlanets[planet]["image"];
+       let planet = pickPlanet(listedPlanets);
+       let planetName = listedPlanets[planet]["name"];
+       let planetDiameter= listedPlanets[planet]["diameter"];
+       let planetStar = listedPlanets[planet]["star"];
+       let planetDistance = listedPlanets[planet]["distance"];
+       let planetMoons = listedPlanets[planet]["moons"];
+       let planetImageUrl = listedPlanets[planet]["image"];
 
 
-       addDestinationInfo(document, planetName, planetDiameter, planetStar, planetDistance, planetMoons, planetImageUrl);
+      addDestinationInfo(document, planetName, planetDiameter, planetStar, planetDistance, planetMoons, planetImageUrl);
+
+
+
+    }).then(function () {
+
        
        let form = document.querySelector("form");
        form.addEventListener("submit", function(event) {
