@@ -22,12 +22,14 @@ function validateInput(testInput) {
     //testInput = testInput.trim(); // (autograder does not like this line)
     if (testInput === '') {
         return 'Empty';
+    } 
+    // Note: parseFloat will return NaN when the first non-whitespace character cannot be converted to a number.
+    // note: input also must be > 0
+    else if ((!isNaN(parseFloat(testInput)) && isFinite(testInput)) && (parseFloat(testInput) >= 0)) {
+        return 'Is a Number';
     }
     else if (isNaN(testInput)) {
         return 'Not a Number';
-    }
-    else if (!isNaN(parseFloat(testInput)) && isFinite(testInput)) {
-        return 'Is a Number';
     }
 }
 
@@ -47,6 +49,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     let copilotType = validateInput(copilot);
     let fuelLevelType = validateInput(fuelLevel);
     let cargoLevelType = validateInput(cargoLevel);
+
+    // this object defines the allowable types of data for the form fields
     let validTypes = {
         "validPilotType": "Not a Number", 
         "validCopilotType": "Not a Number",
@@ -54,7 +58,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         "validCargoLevelType": "Is a Number"
     }
 
-    let isValidData = true; // flag changes to false when field data is invalid
+    let isValidData = true; // flag changes to false when field data is invalid or out of range
 
     // validate data in form fields
     if ((pilotType === "Empty") || (copilotType === "Empty") || (fuelLevelType === "Empty") || (cargoLevelType === "Empty")) {
@@ -90,7 +94,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
             isValidData = false;
         }
 
-        // if all data was valid and feul level and cargo level were within range, display launch ready message
+        // if all data was valid and fuel level and cargo level were within range, display launch ready message
         if (isValidData) {
             list.style.visibility = "visible";
             document.getElementById("launchStatus").style.color ="rgb(65, 159, 106)" // green
@@ -99,7 +103,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     }
 }
 
-// returns a Promise that resolves, after fetching the data from the URL and returning a JSON object from the anonymous function 
+// returns a Promise that resolves after fetching the data from the URL 
 async function myFetch() {
     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
         let result = response.json();

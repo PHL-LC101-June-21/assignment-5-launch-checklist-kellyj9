@@ -1,6 +1,7 @@
 // Write your JavaScript code here!
 
 window.addEventListener("load", function() {
+
     let form = document.querySelector("form");
     form.reset(); // needed to clear the form when the window is reloaded
     document.getElementById("faultyItems").style.visibility = "hidden"; // reset visibility of the form element
@@ -33,6 +34,7 @@ window.addEventListener("load", function() {
 
         document.getElementById("faultyItems").style.visibility = "hidden";
 
+        // get the form data...
         let form = document.querySelector("form");
         form.addEventListener("submit", function(event) {
             let pilot = document.querySelector("input[name=pilotName]").value;
@@ -41,9 +43,9 @@ window.addEventListener("load", function() {
             let cargoLevel = document.querySelector("input[name=cargoMass").value;
             let list = document.getElementById("faultyItems");
             
-            // validate the form and update the launch status / list
+            // ...validate the form and update the launch status / list area of the page
             formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
-            // don't submit
+            // but don't submit
             event.preventDefault();
         });
     });
