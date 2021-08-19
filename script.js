@@ -9,8 +9,8 @@ window.addEventListener("load", function() {
     let listedPlanets; // will hold array of objects
     
     // Set listedPlanetsResponse equal to the returned value of myFetch() 
-    let myURL = "https://handlers.education.launchcode.org/static/planets.json";
-    let listedPlanetsResponse = myFetch(myURL);
+
+    let listedPlanetsResponse = myFetch();
     listedPlanetsResponse.then(function (result) {
         listedPlanets = result;
         console.log(listedPlanets);

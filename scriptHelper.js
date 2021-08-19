@@ -104,7 +104,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 }
 
 // fetches the JSON from the URL, stores it in planetsReturned, and returns the Promise 
-async function myFetch(myURL) {
+async function myFetch() {
+    let myURL = "https://handlers.education.launchcode.org/static/planets.json";
     planetsReturned = await fetch(myURL).then( function(response) {
         let result = response.json();
         return result;
