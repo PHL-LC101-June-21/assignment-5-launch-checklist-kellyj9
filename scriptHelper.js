@@ -22,8 +22,8 @@ function validateInput(testInput) {
     if (testInput === '') {
         return 'Empty';
     } 
-    // Note: parseFloat will return NaN when the first non-whitespace character cannot be converted to a number.
-    // note: input also must be > 0
+    // note: parseFloat will return NaN when the first non-whitespace character cannot be converted to a number.
+    // note: added validation that input also must be > 0
     else if ((!isNaN(parseFloat(testInput)) && isFinite(testInput)) && (parseFloat(testInput) >= 0)) {
         return 'Is a Number';
     }
@@ -83,7 +83,6 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
         // check fuel level.  if too low, set messages
         if (fuelLevel < 10000) {
-            //list.style.visibility = "visible";
             document.getElementById("fuelStatus").innerHTML = `Fuel level too low for launch`;
             document.getElementById("launchStatus").innerHTML = `Shuttle Not Ready for Launch`;
             document.getElementById("launchStatus").style.color = "rgb(199, 37, 78)";  // red
@@ -91,7 +90,6 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         }
         //check cargo level.  if too heavy, set messages
         if (cargoLevel > 10000) {
-            //list.style.visibility = "visible";
             document.getElementById("cargoStatus").innerHTML = `Cargo mass too heavy for launch`;
             document.getElementById("launchStatus").innerHTML = `Shuttle Not Ready for Launch`;
             document.getElementById("launchStatus").style.color = "rgb(199, 37, 78)"; // red
@@ -100,12 +98,11 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
         // if all data was valid and fuel level and cargo level were within range, set launch ready message
         if (isValidData) {
-            //list.style.visibility = "visible";
             document.getElementById("launchStatus").style.color ="rgb(65, 159, 106)" // green
             document.getElementById("launchStatus").innerHTML = `Shuttle is Ready for Launch`;
         }
 
-        // proper data types were entered, show the list of launch status items whether shuttle is ready for launch or not
+        // proper data types were entered, show the list of launch status list whether shuttle is ready for launch or not
         list.style.visibility = "visible";
     }
 }

@@ -9,7 +9,6 @@ window.addEventListener("load", function() {
     let listedPlanets; // will hold array of objects
     
     // Set listedPlanetsResponse equal to the returned value of myFetch() 
-
     let listedPlanetsResponse = myFetch();
     listedPlanetsResponse.then(function (result) {
         listedPlanets = result;
@@ -38,14 +37,14 @@ window.addEventListener("load", function() {
         // get the form data...
         let form = document.querySelector("form");
         form.addEventListener("submit", function(event) {
-            let pilot = document.querySelector("input[name=pilotName]").value;
-            let copilot = document.querySelector("input[name=copilotName").value;
-            let fuelLevel = document.querySelector("input[name=fuelLevel").value;
-            let cargoLevel = document.querySelector("input[name=cargoMass").value;
+            let pilotValue = document.querySelector("input[name=pilotName]").value;
+            let copilotValue = document.querySelector("input[name=copilotName").value;
+            let fuelLevelValue = document.querySelector("input[name=fuelLevel").value;
+            let cargoLevelValue = document.querySelector("input[name=cargoMass").value;
             let list = document.getElementById("faultyItems");
             
             // ...validate the form and update the launch status / list area of the page
-            formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
+            formSubmission(document, list, pilotValue, copilotValue, fuelLevelValue, cargoLevelValue);
             // but don't submit
             event.preventDefault();
         });
