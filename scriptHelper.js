@@ -19,7 +19,6 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
 // takes in a string as a parameter and returns "Empty", "Not a Number", or "Is a Number" as appropriate
 function validateInput(testInput) {
-    //testInput = testInput.trim(); // (autograder does not like this line)
     if (testInput === '') {
         return 'Empty';
     } 
@@ -33,9 +32,10 @@ function validateInput(testInput) {
     }
 }
 
-// 
+// validates the form data, alerts for any invalid input, checks the data for out of range numbers, 
+// and displays launch status messages 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    // reset the style and innerHtml of the launch status
+    // reset the style and innerHtml of the launch status messages each time the form is submitted
     list.style.visibility = "hidden"; 
     document.getElementById("pilotStatus").innerHTML = `Pilot Ready`;
     document.getElementById("copilotStatus").innerHTML = `Co-pilot Ready`;
@@ -71,35 +71,42 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         isValidData = false;
     }
 
-    // if all field data was valid, check fuel level and cargo level
+    // if all field data contained proper data types:
+    //  - set messages to be displayed for the pilot and copilot statuses
+    //  - check fuel level and cargo level.  set messages to be displayed if fuel level and cargo level are out of range
+    //  - if cargo level or fuel level are in range, set message stating launch ready  
+    //  - make the container for the launch status messages visibile
     if (isValidData) {
-        // display the pilot and copilot status
+        // set messages regarding the pilot and copilot status
         document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
         document.getElementById("copilotStatus").innerHTML= `Co-pilot ${copilot} is ready for launch`;
 
-        // check fuel level and display message if too low
+        // check fuel level.  if too low, set messages
         if (fuelLevel < 10000) {
-            list.style.visibility = "visible";
+            //list.style.visibility = "visible";
             document.getElementById("fuelStatus").innerHTML = `Fuel level too low for launch`;
             document.getElementById("launchStatus").innerHTML = `Shuttle Not Ready for Launch`;
             document.getElementById("launchStatus").style.color = "rgb(199, 37, 78)";  // red
             isValidData = false;
         }
-        //check cargo level and display message if too heavy
+        //check cargo level.  if too heavy, set messages
         if (cargoLevel > 10000) {
-            list.style.visibility = "visible";
+            //list.style.visibility = "visible";
             document.getElementById("cargoStatus").innerHTML = `Cargo mass too heavy for launch`;
             document.getElementById("launchStatus").innerHTML = `Shuttle Not Ready for Launch`;
             document.getElementById("launchStatus").style.color = "rgb(199, 37, 78)"; // red
             isValidData = false;
         }
 
-        // if all data was valid and fuel level and cargo level were within range, display launch ready message
+        // if all data was valid and fuel level and cargo level were within range, set launch ready message
         if (isValidData) {
-            list.style.visibility = "visible";
+            //list.style.visibility = "visible";
             document.getElementById("launchStatus").style.color ="rgb(65, 159, 106)" // green
             document.getElementById("launchStatus").innerHTML = `Shuttle is Ready for Launch`;
         }
+
+        // proper data types were entered, show the list of launch status items whether shuttle is ready for launch or not
+        list.style.visibility = "visible";
     }
 }
 
