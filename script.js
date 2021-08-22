@@ -42,13 +42,13 @@ window.addEventListener("load", function() {
             let list = document.getElementById("faultyItems");
             
             // reset the style and innerHtml of the launch status messages section each time the form is submitted
-            list.style.visibility = "hidden"; 
-            document.getElementById("pilotStatus").innerHTML = `Pilot Ready`;
-            document.getElementById("copilotStatus").innerHTML = `Co-pilot Ready`;
-            document.getElementById("fuelStatus").innerHTML = `Fuel level high enough for launch`;
-            document.getElementById("cargoStatus").innerHTML = `Cargo mass low enough for launch`;
-            document.getElementById("launchStatus").innerHTML = `Awaiting Information Before Launch`;
-            document.getElementById("launchStatus").style.color = "black";
+            // list.style.visibility = "hidden"; 
+            // document.getElementById("pilotStatus").innerHTML = `Pilot Ready`;
+            // document.getElementById("copilotStatus").innerHTML = `Co-pilot Ready`;
+            // document.getElementById("fuelStatus").innerHTML = `Fuel level high enough for launch`;
+            // document.getElementById("cargoStatus").innerHTML = `Cargo mass low enough for launch`;
+            // document.getElementById("launchStatus").innerHTML = `Awaiting Information Before Launch`;
+            // document.getElementById("launchStatus").style.color = "black";
 
             // ...validate the form and update the launch status / list area of the page
             formSubmission(document, list, pilotValue, copilotValue, fuelLevelValue, cargoLevelValue);
