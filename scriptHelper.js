@@ -35,14 +35,14 @@ function validateInput(testInput) {
 // validates the form data, alerts for any invalid input, checks the data for out of range numbers, 
 // and displays launch status messages 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    // reset the style and innerHtml of the launch status messages each time the form is submitted
-    list.style.visibility = "hidden"; 
-    document.getElementById("pilotStatus").innerHTML = `Pilot Ready`;
-    document.getElementById("copilotStatus").innerHTML = `Co-pilot Ready`;
-    document.getElementById("fuelStatus").innerHTML = `Fuel level high enough for launch`;
-    document.getElementById("cargoStatus").innerHTML = `Cargo mass low enough for launch`;
-    document.getElementById("launchStatus").innerHTML = `Awaiting Information Before Launch`;
-    document.getElementById("launchStatus").style.color = "black";
+    // reset the style and innerHtml of the launch status messages section each time the form is submitted
+    // list.style.visibility = "hidden"; 
+    // document.getElementById("pilotStatus").innerHTML = `Pilot Ready`;
+    // document.getElementById("copilotStatus").innerHTML = `Co-pilot Ready`;
+    // document.getElementById("fuelStatus").innerHTML = `Fuel level high enough for launch`;
+    // document.getElementById("cargoStatus").innerHTML = `Cargo mass low enough for launch`;
+    // document.getElementById("launchStatus").innerHTML = `Awaiting Information Before Launch`;
+    // document.getElementById("launchStatus").style.color = "black";
 
     // start data validation
     let pilotType = validateInput(pilot);
