@@ -79,7 +79,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     if (isValidData) {
         // set messages regarding the pilot and copilot status
         document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
-        document.getElementById("copilotStatus").innerHTML= `Co-pilot ${copilot} is ready for launch`;
+        document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
 
         // check fuel level.  if too low, set messages
         if (fuelLevel < 10000) {
@@ -98,7 +98,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
         // if all data was valid and fuel level and cargo level were within range, set launch ready message
         if (isValidData) {
-            document.getElementById("launchStatus").style.color ="rgb(65, 159, 106)" // green
+            document.getElementById("launchStatus").style.color = "rgb(65, 159, 106)" // green
             document.getElementById("launchStatus").innerHTML = `Shuttle is Ready for Launch`;
         }
 
@@ -107,13 +107,26 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     }
 }
 
-// fetches the JSON from the URL, stores it in planetsReturned, and returns the Promise 
+//  fetch a JSON file and return the Response
+
+/* Notes: The simplest use of fetch() takes one argument — the path to the resource you want to fetch — 
+and does not directly return the JSON response body but instead returns a promise that resolves with a Response object.
+The Response object, in turn, does not directly contain the actual JSON response body but is instead a representation 
+of the entire HTTP response. So, to extract the JSON body content from the Response object, we use the json() method, 
+which returns a second promise that resolves with the result of parsing the response body text as JSON
+
+Another Note: Despite the method being named json(), the result is not JSON but is instead the result of 
+taking JSON as input and parsing it to produce a JavaScript object.
+https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+https://developer.mozilla.org/en-US/docs/Web/API/Response/json
+*/
+
 async function myFetch() {
     let myURL = "https://handlers.education.launchcode.org/static/planets.json";
     planetsReturned = await fetch(myURL).then( function(response) {
-        return response.json();
+        return response.json();  // returns the parsed JSON as a JS Object
     });
-    return planetsReturned;
+    return planetsReturned; // Returns the Response object
 }
 
 // returns a random planet object from the planets array
