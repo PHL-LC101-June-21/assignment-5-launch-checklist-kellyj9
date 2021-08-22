@@ -21,7 +21,7 @@ window.addEventListener("load", function() {
         // select a random planet object from the planets array
         let planet = pickPlanet(listedPlanets);
 
-        // get the planet key values
+        // get the planet data
         let planetName = planet["name"];
         let planetDiameter= planet["diameter"];
         let planetStar = planet["star"];
@@ -33,26 +33,16 @@ window.addEventListener("load", function() {
         addDestinationInfo(document, planetName, planetDiameter, planetStar, planetDistance, planetMoons, planetImageUrl);
 
         // get the form data...
-        //let form = document.querySelector("form");
         form.addEventListener("submit", function(event) {
             let pilotValue = document.querySelector("input[name=pilotName]").value;
             let copilotValue = document.querySelector("input[name=copilotName").value;
             let fuelLevelValue = document.querySelector("input[name=fuelLevel").value;
             let cargoLevelValue = document.querySelector("input[name=cargoMass").value;
             let list = document.getElementById("faultyItems");
-            
-            // reset the style and innerHtml of the launch status messages section each time the form is submitted
-            // list.style.visibility = "hidden"; 
-            // document.getElementById("pilotStatus").innerHTML = `Pilot Ready`;
-            // document.getElementById("copilotStatus").innerHTML = `Co-pilot Ready`;
-            // document.getElementById("fuelStatus").innerHTML = `Fuel level high enough for launch`;
-            // document.getElementById("cargoStatus").innerHTML = `Cargo mass low enough for launch`;
-            // document.getElementById("launchStatus").innerHTML = `Awaiting Information Before Launch`;
-            // document.getElementById("launchStatus").style.color = "black";
 
             // ...validate the form and update the launch status / list area of the page
             formSubmission(document, list, pilotValue, copilotValue, fuelLevelValue, cargoLevelValue);
-            // but don't submit
+            // ...but don't submit
             event.preventDefault();
         });
     });
