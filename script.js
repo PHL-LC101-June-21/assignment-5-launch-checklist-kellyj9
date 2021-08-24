@@ -4,7 +4,7 @@ window.addEventListener("load", function() {
 
     let form = document.querySelector("form");
     form.reset(); // needed to clear the form when the window is reloaded
-    document.getElementById("faultyItems").style.visibility = "hidden"; // reset visibility of the form element
+    document.getElementById("faultyItems").style.visibility = "hidden"; // reset visibility of the launch status / list area
 
     // get the form data...
     form.addEventListener("submit", function(event) {
@@ -20,17 +20,15 @@ window.addEventListener("load", function() {
         event.preventDefault();
     });
 
-
-    let listedPlanets; // will hold array of objects
+    let listedPlanets; // will hold JSON
     
-    // Set listedPlanetsResponse equal to the returned value of myFetch() 
+    // set listedPlanetsResponse equal to a Response object when the fetch is complete
     let listedPlanetsResponse = myFetch();
+    // when the fetch is complete, set listed planets equal to the JSON
     listedPlanetsResponse.then(function (result) {
         listedPlanets = result;
         console.log(listedPlanets);
- 
-    //}).then(function () {
-        console.log(listedPlanets);
+
     // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
 
         // select a random planet object from the planets array
@@ -46,7 +44,5 @@ window.addEventListener("load", function() {
 
         // display the planet data for the mission target
         addDestinationInfo(document, planetName, planetDiameter, planetStar, planetDistance, planetMoons, planetImageUrl);
-
-    
-    });
+   });
 });

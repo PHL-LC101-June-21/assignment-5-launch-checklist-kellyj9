@@ -5,7 +5,7 @@ require('isomorphic-fetch');
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
     let missionTarget = document.getElementById("missionTarget");
     missionTarget.innerHTML = 
-    // Here is the HTML formatting for our mission target div.
+    // Here is the HTML formatting for our mission target div
         `<h2>Mission Destination</h2>
         <ol>
             <li>Name: ${name}</li>
@@ -107,8 +107,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     }
 }
 
-//  fetch a JSON file and return the Response
-
+//  fetch a resource containing JSON and return the Response
 /* Notes: The simplest use of fetch() takes one argument — the path to the resource you want to fetch — 
 and does not directly return the JSON response body but instead returns a promise that resolves with a Response object.
 The Response object, in turn, does not directly contain the actual JSON response body but is instead a representation 
@@ -124,9 +123,9 @@ https://developer.mozilla.org/en-US/docs/Web/API/Response/json
 async function myFetch() {
     let myURL = "https://handlers.education.launchcode.org/static/planets.json";
     planetsReturned = await fetch(myURL).then( function(response) {
-        return response.json();  // returns the parsed JSON as a JS Object
+        return response.json();  // return JSON array
     });
-    return planetsReturned; // Returns the Response object
+    return planetsReturned; // When fetch completes, return the Response object
 }
 
 // returns a random planet object from the planets array
